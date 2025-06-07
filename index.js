@@ -1,12 +1,18 @@
 const express = require("express");
 const sequelize = require("./config/database");
 const CursoRouter = require("./src/routes/CursoRoutes");
+const UsuarioRouter = require("./src/routes/UsuarioRoutes");
+const AuthRouter = require("./src/routes/AuthRoutes");
+
+require("dotenv").config();
 
 const app = express();
 app.use(express.json());
 
 // Routes
+app.use("/auth", AuthRouter);
 app.use("/cursos", CursoRouter);
+app.use("/usuarios", UsuarioRouter);
 
 sequelize
   .sync()
