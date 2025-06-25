@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const sequelize = require("./config/database");
 const CursoRouter = require("./src/routes/CursoRoutes");
 const UsuarioRouter = require("./src/routes/UsuarioRoutes");
@@ -11,6 +12,14 @@ const authMiddleware = require("./src/middlewares/authMiddleware");
 require("dotenv").config();
 
 const app = express();
+app.use(
+  cors({
+    origin: "http://localhost:3001",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 app.use(express.json());
 
 // Routes
