@@ -4,9 +4,9 @@ const UsuarioController = {
   async criarUsuario(req, res) {
     try {
       const resultado = await UsuarioService.criarUsuario(req.body);
-      res.status(201).json(resultado);
+      res.status(200).json(resultado);
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      res.status(400).json({ message: error.message });
     }
   },
   async listarUsuarios(req, res) {
@@ -15,7 +15,7 @@ const UsuarioController = {
 
       res.status(200).json(usuarios);
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      res.status(500).json({ message: "Erro ao listar usuários" });
     }
   },
   async login(req, res) {
@@ -23,7 +23,7 @@ const UsuarioController = {
       const token = await UsuarioService.login(req.body);
       res.status(200).json({ token });
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      res.status(400).json({ message: error.message });
     }
   },
 };

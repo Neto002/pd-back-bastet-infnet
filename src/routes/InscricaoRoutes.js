@@ -5,6 +5,4 @@ const router = express.Router();
 
 router.use(authMiddleware);
 
-router.post("/:idCurso", InscricaoController.inscrever);
-
 module.exports = router;

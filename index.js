@@ -3,7 +3,10 @@ const sequelize = require("./config/database");
 const CursoRouter = require("./src/routes/CursoRoutes");
 const UsuarioRouter = require("./src/routes/UsuarioRoutes");
 const AuthRouter = require("./src/routes/AuthRoutes");
-const InscricaoRouter = require("./src/routes/InscricaoRoutes");
+
+const CursoController = require("./src/controllers/CursoController");
+
+const authMiddleware = require("./src/middlewares/authMiddleware");
 
 require("dotenv").config();
 
@@ -11,10 +14,10 @@ const app = express();
 app.use(express.json());
 
 // Routes
-app.use("/auth", AuthRouter);
-app.use("/cursos", CursoRouter);
-app.use("/usuarios", UsuarioRouter);
-app.use("/inscricoes", InscricaoRouter);
+app.use("/:idUsuario", authMiddleware, CursoController.listarCursosInscritos);
+app.use("/login", AuthRouter);
+app.use("/cursos", authMiddleware, CursoRouter);
+app.use("/usuarios", authMiddleware, UsuarioRouter);
 
 sequelize
   .sync()
