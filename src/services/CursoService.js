@@ -55,7 +55,7 @@ const CursoService = {
       include: [
         {
           model: Inscricao,
-          where: { usuarioId },
+          where: { USUARIO_ID: usuarioId },
           attributes: [],
         },
       ],
@@ -69,7 +69,7 @@ const CursoService = {
           ],
           [
             sequelize.literal(
-              `(SELECT COUNT(*) FROM INSCRICOES WHERE INSCRICOES.CURSO_ID = Curso.ID AND INSCRICOES.USUARIO_ID = ${usuarioId}) AND INSCRICOES.DATA_CANCELAMENTO IS NULL`
+              `(SELECT COUNT(*) FROM INSCRICOES WHERE INSCRICOES.CURSO_ID = Curso.ID AND INSCRICOES.USUARIO_ID = ${usuarioId} AND INSCRICOES.DATA_CANCELAMENTO IS NULL)`
             ),
             "data_cancelamento_inscricao",
           ],

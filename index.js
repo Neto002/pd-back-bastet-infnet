@@ -14,8 +14,8 @@ const app = express();
 app.use(express.json());
 
 // Routes
-app.use("/:idUsuario", authMiddleware, CursoController.listarCursosInscritos);
 app.use("/login", AuthRouter);
+app.use("/:idUsuario", authMiddleware, CursoController.listarCursosInscritos);
 app.use("/cursos", authMiddleware, CursoRouter);
 app.use("/usuarios", authMiddleware, UsuarioRouter);
 
