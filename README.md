@@ -116,4 +116,49 @@ VALUES
 	'https://reactnative.dev/img/logo-og.png',
 	"2025-05-28"
 );
+
+INSERT INTO CURSOS
+(
+	NOME,
+	DESCRICAO,
+	CAPA,
+	INICIO
+)
+VALUES
+(
+	'Java com Spring Boot',
+	'Desenvolvimento back-end com Java utilizando o framework Spring Boot',
+	'https://repository-images.githubusercontent.com/259018719/0663e880-8a02-11ea-9c75-44ca9a90cc1f',
+	'2025-07-01'
+);
+
+INSERT INTO CURSOS
+(
+	NOME,
+	DESCRICAO,
+	CAPA,
+	INICIO
+)
+VALUES
+(
+	'.NET com C#',
+	'Criação de aplicações web e APIs utilizando .NET 6 com C#',
+	'https://hermes.dio.me/articles/cover/45ee97d9-537e-43a3-a970-ac825a118710.png',
+	'2025-07-03'
+);
+
+INSERT INTO CURSOS
+(
+	NOME,
+	DESCRICAO,
+	CAPA,
+	INICIO
+)
+VALUES
+(
+	'Programação com Golang',
+	'Desenvolvimento de sistemas e APIs com a linguagem Go (Golang)',
+	'https://camo.githubusercontent.com/92a6a28d899f9fcb5d13dc1d65aef6d154327de85d34788b5bb4a89f03686149/68747470733a2f2f7777772e766572746963612e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031392f30372f476f6c616e672e706e67',
+	'2025-07-05'
+);
 ```
