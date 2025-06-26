@@ -113,7 +113,7 @@ VALUES
 (
 	'React Native',
 	'Programação front-end com Javascript (React Native) para apps mobile',
-	'https://user-images.githubusercontent.com/4727/38117898-75c704e4-336c-11e8-82bb-dffd73f55e94.png',
+	'https://reactnative.dev/img/logo-og.png',
 	"2025-05-28"
 );
 ```
