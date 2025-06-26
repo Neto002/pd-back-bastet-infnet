@@ -24,9 +24,9 @@ app.use(express.json());
 
 // Routes
 app.use("/login", AuthRouter);
-app.use("/:idUsuario", authMiddleware, CursoController.listarCursosInscritos);
+app.use("/usuarios", UsuarioRouter);
 app.use("/cursos", authMiddleware, CursoRouter);
-app.use("/usuarios", authMiddleware, UsuarioRouter);
+app.use("/:idUsuario", authMiddleware, CursoController.listarCursosInscritos);
 
 sequelize
   .sync()

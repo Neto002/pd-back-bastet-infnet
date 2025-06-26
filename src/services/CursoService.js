@@ -36,6 +36,12 @@ const CursoService = {
             ),
             "usuario_inscrito",
           ],
+          [
+            sequelize.literal(
+              `(SELECT COUNT(*) FROM INSCRICOES WHERE INSCRICOES.CURSO_ID = Curso.ID AND INSCRICOES.USUARIO_ID = ${usuarioId} AND INSCRICOES.DATA_CANCELAMENTO IS NOT NULL)`
+            ),
+            "data_cancelamento_inscricao",
+          ],
         ],
       },
     });
@@ -48,6 +54,8 @@ const CursoService = {
       inscricoes: curso.getDataValue("total_inscricoes"),
       inicio: new Date(curso.inicio).toLocaleDateString("pt-BR"),
       inscrito: curso.getDataValue("usuario_inscrito") > 0,
+      inscricao_cancelada:
+        curso.getDataValue("data_cancelamento_inscricao") > 0,
     }));
   },
   async listarCursosInscritos(usuarioId) {
@@ -69,7 +77,7 @@ const CursoService = {
           ],
           [
             sequelize.literal(
-              `(SELECT COUNT(*) FROM INSCRICOES WHERE INSCRICOES.CURSO_ID = Curso.ID AND INSCRICOES.USUARIO_ID = ${usuarioId} AND INSCRICOES.DATA_CANCELAMENTO IS NULL)`
+              `(SELECT COUNT(*) FROM INSCRICOES WHERE INSCRICOES.CURSO_ID = Curso.ID AND INSCRICOES.USUARIO_ID = ${usuarioId} AND INSCRICOES.DATA_CANCELAMENTO IS NOT NULL)`
             ),
             "data_cancelamento_inscricao",
           ],
